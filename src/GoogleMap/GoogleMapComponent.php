@@ -9,12 +9,30 @@ class GoogleMapComponent extends Control
 	private $markersProvider;
 
 	public function __construct(IMarkersProvider $markersProvider) {
+		parent::__construct();
 		$this->markersProvider = $markersProvider;
 	}
 
-	public function handleMarkers()
+	public function handleMarkers(
+		$latsw = NULL,
+		$lngsw = NULL,
+		$latne = NULL,
+		$lngne = NULL)
 	{
+		//echo $this->getName();
+		//echo $latsw;
+		//echo $this->params['latsw'];
+		//dump($this->presenter->getParameters());
+		$markers = array();
+		$markersProvider = $this->markersProvider;
 		
+		if($latsw != NULL) {
+			$markers = $markersProvider->getInRectangle($latsw, $lngsw, $latne, $lngne);
+		} else {
+			$markers = $markersProvider->getAll();
+		}
+		
+		$this->presenter->payload->markers = $markers;
 		$this->presenter->sendPayload();
 	}
 
@@ -32,6 +50,7 @@ class GoogleMapComponent extends Control
 		$template->setFile(__DIR__ . '/GoogleMapComponentHTML.latte');
 	
 		// map settings
+		$template->componentName = $this->getName();
 		$template->key = 'AIzaSyCwqfZYn6EDGvMHw3GfyP4vcW944Lq1Pi0';
 		$template->initialCenterLatitude = 50.083;
 		$template->initialCenterLongitude = 14.423;

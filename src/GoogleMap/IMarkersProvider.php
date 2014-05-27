@@ -4,7 +4,7 @@ namespace GoogleMap;
 
 interface IMarkersProvider
 {
-	function getInRectangle();
+	function getInRectangle ($latsw, $lngsw, $latne, $lngne);
 	
 	function getAll();
 }

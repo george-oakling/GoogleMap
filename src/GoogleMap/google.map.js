@@ -31,20 +31,21 @@ $(function(){
 		var oldMarkersCount = markers.length;
 		
 		// add these coordinates (current map boundaries) to each map refresh request
-		var currentMapBoundaries = {
-			"latne" : map.getBounds().getNorthEast().lat(),
-			"lngne" : map.getBounds().getSouthWest().lat(),
-			"latsw" : map.getBounds().getSouthWest().lat(),
-			"lngsw" : map.getBounds().getSouthWest().lng()
-		};
+		var currentMapBoundaries = {};
+		currentMapBoundaries[gMap.componentName + "-latsw"] = map.getBounds().getSouthWest().lat(),
+		currentMapBoundaries[gMap.componentName + "-lngsw"] = map.getBounds().getSouthWest().lng(),
+		currentMapBoundaries[gMap.componentName + "-latne"] = map.getBounds().getNorthEast().lat(),
+		currentMapBoundaries[gMap.componentName + "-lngne"] = map.getBounds().getSouthWest().lat()
 		
 		// get the markers position and add them to the map
 		$.getJSON(
 			gMap.markersRetrievalAddress,
 			currentMapBoundaries,
 			function(data) {
+				
 				if(typeof data.markers !== "undefined") {
-					$.each(data, function(i, item) {
+					
+					$.each(data.markers, function(i, item) {
 			
 						// add marker to map
 						var position = new google.maps.LatLng(item.lat, item.lng);

@@ -1,5 +1,7 @@
 <?php
 
+namespace GoogleMapComponent;
+
 use Nette\Application\UI\Control;
 
 class GoogleMapComponent extends Control

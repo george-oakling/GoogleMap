@@ -19,11 +19,7 @@ class MarkersProvider extends Object implements IMarkersProvider
 		$this->database = $database;
 	}
 
-	public function getInRectangle(
-		$latsw,
-		$lngsw,
-		$latne,
-		$lngne)
+	public function getInRectangle($latsw, $lngsw, $latne, $lngne)
 	{
 		$database = $this->database;
 		$markers = $database->table('markers')

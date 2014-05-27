@@ -60,6 +60,7 @@ $(function(){
 				
 						// append infowindow to each marker
 						google.maps.event.addListener(marker, 'click', function() {
+							infowindow.close();
 							infowindow.setContent(item.content);
 							infowindow.open(map, marker);
 						});
@@ -72,5 +73,28 @@ $(function(){
 		// remove old markers, which are out of bounds or are replaced with the new set of markers
 		markers.splice(0, oldMarkersCount);
 	});
+	
+	// clickable events
+	if(gMap.clickable) {
+		google.maps.event.addListener(map, "click", function(event) {
+		
+			var marker = new google.maps.Marker({
+				position: event.latLng,
+				map: map
+			});
+		
+			var dialog = new google.maps.InfoWindow();
+		
+			$.get(gMap.clickableWindow, function(data) {
+				dialog.setContent(data);
+				alert("Load was performed.");
+			});
+		
+			google.maps.event.addListener(marker, "click", function() {
+				dialog.open(map, marker);
+			});
+		
+		});
+	}
 	
 });

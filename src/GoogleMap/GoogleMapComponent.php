@@ -13,16 +13,8 @@ class GoogleMapComponent extends Control
 		$this->markersProvider = $markersProvider;
 	}
 
-	public function handleMarkers(
-		$latsw = NULL,
-		$lngsw = NULL,
-		$latne = NULL,
-		$lngne = NULL)
+	public function handleMarkers($latsw = NULL, $lngsw = NULL, $latne = NULL, $lngne = NULL)
 	{
-		//echo $this->getName();
-		//echo $latsw;
-		//echo $this->params['latsw'];
-		//dump($this->presenter->getParameters());
 		$markers = array();
 		$markersProvider = $this->markersProvider;
 		
@@ -51,6 +43,8 @@ class GoogleMapComponent extends Control
 	
 		// map settings
 		$template->componentName = $this->getName();
+		//$template->clickable = TRUE;
+		//$template->clickableWindow = $this->presenter->link('//Test:in');
 		$template->key = 'AIzaSyCwqfZYn6EDGvMHw3GfyP4vcW944Lq1Pi0';
 		$template->initialCenterLatitude = 50.083;
 		$template->initialCenterLongitude = 14.423;

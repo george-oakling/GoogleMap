@@ -1,0 +1,13 @@
+/*
+				Markers JSON, which is accepted
+				[
+					{
+						"lat": 50,
+						"lng": 14,
+						"title": "Hi, I am your marker!",
+						"content": "I'm a <strong>barbie</strong> girl, in a barbie world!"
+					},
+					...
+				]
+				*/
+				

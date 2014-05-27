@@ -1,0 +1,35 @@
+<div id="map" style="width:auto; height: 700px; overflow: hidden"></div>
+{$link}
+{/block}
+
+{block scripts}
+{include parent}
+<script src="http://maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;sensor=false{else}sensor=true{/if}"></script>
+<script type="text/javascript">
+
+/* initial settings for google maps scripts */
+var gMap = {
+	mapElement : {$mapElement}, // id of an element, which will be used for 
+	initialZoom : {$initialZoom}, // initial zoom, 4-16
+	initialCenterLatitude : {$initialCenterLatitude}, // what is the latitude of initial center of map?
+	initialCenterLongitude : {$initialCenterLongitude}, // what is the longitude of initial center of map?
+	markersRetrievalAddress : {$link} // what is the link where to find the markers?
+	//type : google.maps.MapTypeId.{$mapType|noescape} // ROADMAP etc.
+};
+
+</script>
+<script>{include "../../components/google.maps.js"}</script>
+
+/* old shit */
+// set map height
+//setMapHeight();
+//$(window).resize(function() { setMapHeight(); });
+// add listeners to map
+//addEvents(map);
+/*
+''+
+						'	<div id="content" style="width: 200px; height: 200px;">'+
+						'		<img src=' + {$basePath} + '/' + item.name + ' width="150">'+
+						'	</div>'
+					*/
+

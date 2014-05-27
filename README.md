@@ -9,6 +9,7 @@ TODO
 - write tests
 - include interface of IMarkers to make the component independent on the source of markers
 - code cleanup
+- better composer.json
 
 
 Ideas

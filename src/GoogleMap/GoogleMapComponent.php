@@ -8,7 +8,7 @@ class GoogleMapComponent extends Control
 {
 	private $markersProvider;
 
-	public function __construct(MarkersProvider $markersProvider) {
+	public function __construct(IMarkersProvider $markersProvider) {
 		$this->markersProvider = $markersProvider;
 	}
 

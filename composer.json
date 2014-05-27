@@ -1,0 +1,21 @@
+{
+  "name": "george-oakling/googlemapcomponent",
+	"description": "Component for Google Maps integration into Nette projects",
+	"keywords": ["googlemaps", "javascript", "nette"],
+	"homepage": "http://github.com/george-oakling/GoogleMapComponent",
+	"license": "?",
+	"authors": [
+		{
+			"name": "George Oakling",
+			"email": "george@oakling.name"
+		}
+	],
+	"autoload": {
+		"psr-0": {
+			"GoogleMapComponent": ""
+		}
+	},
+	"require": {
+		"nette/nette": "~2.1"
+	}
+}

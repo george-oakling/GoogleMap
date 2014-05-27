@@ -1,5 +1,5 @@
 {
-  "name": "george-oakling/googlemapcomponent",
+  "name": "george-oakling/googlemap",
 	"description": "Component for Google Maps integration into Nette projects",
 	"keywords": ["googlemaps", "javascript", "nette"],
 	"homepage": "http://github.com/george-oakling/GoogleMapComponent",

@@ -1,16 +1,20 @@
 <?php
 
-namespace GoogleMapComponent;
+namespace GoogleMap;
 
 use Nette\Application\UI\Control;
 
 class GoogleMapComponent extends Control
 {
+	private $markersProvider;
+
+	public function __construct(MarkersProvider $markersProvider) {
+		$this->markersProvider = $markersProvider;
+	}
 
 	public function handleMarkers()
 	{
-		//$this->payload->markers = file_get_contents(__DIR__.'/markers.json');
-		//$this->payload
+		
 		$this->presenter->sendPayload();
 	}
 
@@ -21,7 +25,7 @@ class GoogleMapComponent extends Control
 		$this->renderJS();
 	}
 
-	/* render just HTML part of the component */
+	/* render HTML and JS setup part of the component */
 	public function renderHTML()
 	{
 		$template = $this->template;
@@ -39,7 +43,7 @@ class GoogleMapComponent extends Control
 		$template->render();
 	}
 	
-	/* if you use janmarek's webloader, than this is useless for you and instead of this, add google.map.js to files loaded with webloader */
+	/* render generic JS, better is to use google.map.js with janmarek's webloader (after jquery load) */
 	public function renderJS()
 	{
 		$template = $this->template;

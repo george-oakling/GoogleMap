@@ -1,5 +1,5 @@
 GoogleMap - component for Nette
--------------------------------
+==========================
 
 
 Requirements
@@ -75,7 +75,22 @@ The second part is Javascript code, which operates with the map object. This par
 IMarkersProvider implementation
 ------------------------------
 
-The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return JSON objects implementing following schema:
+The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return array of markers, which one of each shloud have these proportions:
+
+```php
+$markers = array(
+	[0] => array(
+		'lat' => 50,
+		'lng' => 14,
+		'title' => 'Prague',
+		'content' => 'Welcome to Prague, and enjoy your vacation! We have <strong>metro</strong>!'
+		// content can have HTML inside, this will be then opened in infowindow
+	)
+);
+
+```
+
+Then the GoogleMapComponent transfers these objects into one JSON object, which is sent to the map by AJAX request and then handled by the Javascript in the google.map.js file. The JSON file looks like this:
 
 ```json
 {
@@ -91,4 +106,15 @@ markers:
 	]
 }
 ```
+
+Howto include a link to some presenter with marker special params?
+----------------------------------------------------------------
+
+TODO - implementation still not clean enough.
+
+
+Click-on-map event
+-------------------
+
+TODO - implementation is TBD.
 

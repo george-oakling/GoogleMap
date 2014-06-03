@@ -9,7 +9,7 @@ class GoogleMapComponent extends Control
 	/** implements IMarkersProvider */
 	private $markersProvider;
 	
-	/** implements IClickEvent */
+	/** TODO */
 	private $clickEvent;
 
 	public $key, $initialCenterLatitude, $initialCenterLongitude, $mapElementId, $initialZoom;
@@ -24,7 +24,7 @@ class GoogleMapComponent extends Control
 		$markers = array();
 		$markersProvider = $this->markersProvider;
 		
-		if($latsw != NULL) {
+		if($latsw !== NULL) {
 			$markers = $markersProvider->getInRectangle($latsw, $lngsw, $latne, $lngne);
 		} else {
 			$markers = $markersProvider->getAll();
@@ -34,7 +34,7 @@ class GoogleMapComponent extends Control
 		$this->presenter->sendPayload();
 	}
 
-	/* render all */
+	/* render both component parts */
 	public function render()
 	{
 		$this->renderHTML();
@@ -50,7 +50,11 @@ class GoogleMapComponent extends Control
 		$template->markersRetrievalAddress = $this->markersProvider ? $this->link('markers!') : FALSE;
 		$template->clickEvent = $this->clickEvent ? $this->clickEvent : FALSE;
 		$template->componentName = $this->name;
-		$template->key = $this->key;
+		
+		// if key is set, send it to template, otherwise use google map without key
+		if(isset($this->key))
+			$template->key = $this->key;
+		
 		$template->initialCenterLatitude = $this->initialCenterLatitude;
 		$template->initialCenterLongitude = $this->initialCenterLongitude;
 		$template->initialZoom = $this->initialZoom ? $this->initialZoom : 14;

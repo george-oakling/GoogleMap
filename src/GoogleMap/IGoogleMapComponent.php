@@ -4,6 +4,6 @@ namespace GoogleMap;
 
 interface IGoogleMapComponent
 {
-	/** @return GoogleMapComponent */
+	/** @return GoogleMap\GoogleMapComponent */
 	function create();
 }

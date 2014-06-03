@@ -40,10 +40,10 @@ You must include JQuery before the {control googleMap}, or if you use scripts bl
 
 There is no need for additional parameters, but usually you want to add some actions and handlers to map.
 
-1. For handling the markers, which will be put on the map, you have IMarkersProvider interface, which is very simple and includes two methods. Sample MarkersProvider is in sources. The use is easy:
+1. For handling the markers, which will be put on the map, you have IMarkersProvider interface, which is very simple and includes two methods. Sample SampleMarkersProvider is in sources. The use is easy:
 
 ```php
-$markersProvider = new GoogleMap\MarkersProvider();
+$markersProvider = new GoogleMap\SampleMarkersProvider();
 $gmap->setMarkersProvider($markersProvider);
 ```
 
@@ -57,13 +57,13 @@ $gmap->mapElementId = 'map';
 $gmap->key = 'AIzAxxx:-)';
 ```
 
-There are actually two parts of the GoogleMap component. First one is needed HTML, JS scripts for map options, this can be rendered with this command:
+There are actually two parts of the GoogleMap component. First one is needed HTML and JS scripts for map options, this can be rendered with this command:
 
 ```
 {control googleMap:HTML}
 ```
 
-The second part is Javascript code, which operates with the map object. This part works quite good with janmarek/webloader component, all you need is add google.map.js in component folder to webloader's JS definition, or you can add below lines to block like this:
+The second part is Javascript code, which operates with the map object. This part works quite good with janmarek/webloader component, all you need is to add google.map.js in component folder to webloader's JS definition, or you can add below lines to block like this:
 
 ```
 {block scripts}
@@ -72,10 +72,11 @@ The second part is Javascript code, which operates with the map object. This par
 {/block scripts}
 ```
 
+
 IMarkersProvider implementation
 ------------------------------
 
-The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return array of markers, which one of each shloud have these proportions:
+The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return array of markers, which is described here:
 
 ```php
 $markers = array(
@@ -94,20 +95,19 @@ Then the GoogleMapComponent transfers these objects into one JSON object, which 
 
 ```json
 {
-markers:
+"markers":
 	[
 		{
 			"lat": 50,
 			"lng": 14,
 			"title": "Hi, I am your marker!",
 			"content": "I'm a <strong>barbie</strong> girl, in a barbie world!"
-		},
-		...
+		}
 	]
 }
 ```
 
-Howto include a link to some presenter with marker special params?
+Howto include into marker infowindow a link to some presenter with marker special params?
 ----------------------------------------------------------------
 
 TODO - implementation still not clean enough.

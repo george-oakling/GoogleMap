@@ -13,17 +13,18 @@ Installation
 ------------
 
 Ideally by composer:
-composer require george-oakling/googlemap:dev-master
 
-Or download a zip and put it in the vendors/other:
-...
+```
+composer require george-oakling/googlemap:dev-master
+```
+
+Or download a zip and put it in the vendors/others.
 
 
 Usage
 -----
 
-Use this component as usual components, with setting up in the component code, e.g.:
-
+```php
 use GoogleMap;
 
 public function createComponentGoogleMap()
@@ -33,6 +34,12 @@ public function createComponentGoogleMap()
 }
 
 {control googleMap}
+```
+
+There is no need for additional parameters, but usually you want to add some actions and handlers to map.
+
+1. For handling the markers, which will be put on the map, you have IMarkersProvider interface, which is very simple and includes two methods. Sample MarkersProvider is in sources. The 
+
 
 If you want to add some configuration of Google map component, do it like this:
 

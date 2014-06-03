@@ -38,19 +38,20 @@ public function createComponentGoogleMap()
 
 There is no need for additional parameters, but usually you want to add some actions and handlers to map.
 
-1. For handling the markers, which will be put on the map, you have IMarkersProvider interface, which is very simple and includes two methods. Sample MarkersProvider is in sources. The 
+1. For handling the markers, which will be put on the map, you have IMarkersProvider interface, which is very simple and includes two methods. Sample MarkersProvider is in sources. The use is easy:
 
-
-If you want to add some configuration of Google map component, do it like this:
-
-$markersProvider = new SampleMarkersProvider();
+```php
+$markersProvider = new GoogleMap\MarkersProvider();
 
 $gmap = new GoogleMap\GoogleMapComponent();
 $gmap->setMarkersProvider($markersProvider);
+```
 
-$gmap->setOptions()
-{
-}
+2. You want to set intial center of map, zoom or map element id? No problem at all:
 
-TODO...
-
+```php
+$gmap->initialCenterLatitude = 50.083;
+$gmap->initialCenterLongitude = 14.423;
+$gmap->initialZoom = 12;
+$gmap->mapElementId = 'map';
+```

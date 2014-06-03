@@ -12,7 +12,7 @@ $(function(){
 
 	// start da map
 	map = new google.maps.Map(
-		document.getElementById(gMap.mapElement), {
+		document.getElementById(gMap.mapElementId), {
 			center : new google.maps.LatLng(
 				gMap.initialCenterLatitude,
 				gMap.initialCenterLongitude),
@@ -25,6 +25,8 @@ $(function(){
 	infowindow = new google.maps.InfoWindow();
 
 	// load new markers after each map refresh, when its idle
+	
+	if(gMap.markersRetrievalAddress) {
 	google.maps.event.addListener(map, 'idle', function() {
 	
 		// count the old markers, but remove them after adding the new markers to avoid flashing
@@ -73,9 +75,10 @@ $(function(){
 		// remove old markers, which are out of bounds or are replaced with the new set of markers
 		markers.splice(0, oldMarkersCount);
 	});
+	}
 	
 	// clickable events
-	if(gMap.clickable) {
+	if(gMap.clickEvent) {
 		google.maps.event.addListener(map, "click", function(event) {
 		
 			var marker = new google.maps.Marker({

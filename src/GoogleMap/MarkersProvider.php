@@ -14,6 +14,8 @@ class MarkersProvider extends Object implements IMarkersProvider
 {
 	private $database;
 	
+	//private $infoWindowURL;
+	
 	public function __construct(Context $database)
 	{
 		$this->database = $database;
@@ -36,7 +38,24 @@ class MarkersProvider extends Object implements IMarkersProvider
 		
 	}
 	
+	/*public function setInfoWindowURL($url)
+	{
+		$this->infoWindowURL = $url;
+	}
+	
+	public function getInfoWindowURL()
+	{
+		return $this->infoWindowURL;
+	}*/
+	
 	public function getAll()
 	{
+		$database = $this->database;
+		$markers = $database->table('markers')->fetchAll();
+		$retval = array_map(function($row) {
+			return $row->toArray();
+		}, iterator_to_array($markers));
+		
+		return $retval;
 	}
 }

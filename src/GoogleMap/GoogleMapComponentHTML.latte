@@ -5,17 +5,22 @@
 
 /* initial settings for google maps scripts */
 var gMap = {
+	
+	// name of component for handling the actions
 	componentName : {$componentName},
-	{ifset $clickable}
-		clickable : true,
-		clickableWindow : {$clickableWindow},
-	{/ifset}
-	mapElement : {$mapElement}, // id of an element, which will be used for 
+	
+	// is the markers provider initialized?
+	markersRetrievalAddress: {$markersRetrievalAddress},
+	
+	// do we have a function for handling the click action?
+	clickEvent: {$clickEvent},
+	
+	mapElementId : {$mapElementId}, // id of an element, which will be used for 
 	initialZoom : {$initialZoom}, // initial zoom, 4-16
 	initialCenterLatitude : {$initialCenterLatitude}, // what is the latitude of initial center of map?
 	initialCenterLongitude : {$initialCenterLongitude}, // what is the longitude of initial center of map?
-	markersRetrievalAddress : {$link} // what is the link where to retrieve the markers?
-	//type : google.maps.MapTypeId.{$mapType|noescape} // ROADMAP etc.
+	
+	//type : google.maps.MapTypeId.mapType // ROADMAP etc.
 };
 
 </script>

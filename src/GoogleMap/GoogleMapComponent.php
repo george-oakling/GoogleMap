@@ -6,10 +6,16 @@ use Nette\Application\UI\Control;
 
 class GoogleMapComponent extends Control
 {
+	/** implements IMarkersProvider */
 	private $markersProvider;
+	
+	/** implements IClickEvent */
+	private $clickEvent;
 
-	public function __construct(IMarkersProvider $markersProvider) {
-		parent::__construct();
+	public $key, $initialCenterLatitude, $initialCenterLongitude, $mapElementId, $initialZoom;
+
+	public function setMarkersProvider(IMarkersProvider $markersProvider)
+	{
 		$this->markersProvider = $markersProvider;
 	}
 
@@ -41,18 +47,15 @@ class GoogleMapComponent extends Control
 		$template = $this->template;
 		$template->setFile(__DIR__ . '/GoogleMapComponentHTML.latte');
 	
-		// map settings
-		$template->componentName = $this->getName();
-		//$template->clickable = TRUE;
-		//$template->clickableWindow = $this->presenter->link('//Test:in');
-		$template->key = 'AIzaSyCwqfZYn6EDGvMHw3GfyP4vcW944Lq1Pi0';
-		$template->initialCenterLatitude = 50.083;
-		$template->initialCenterLongitude = 14.423;
-		$template->link = $this->link('markers!');
-		$template->mapElement = 'map';
-		$template->mapType = 'ROADMAP';
-		$template->zoom = $this->template->initialZoom = 12;
-		
+		$template->markersRetrievalAddress = $this->markersProvider ? $this->link('markers!') : FALSE;
+		$template->clickEvent = $this->clickEvent ? $this->clickEvent : FALSE;
+		$template->componentName = $this->name;
+		$template->key = $this->key;
+		$template->initialCenterLatitude = $this->initialCenterLatitude;
+		$template->initialCenterLongitude = $this->initialCenterLongitude;
+		$template->initialZoom = $this->initialZoom ? $this->initialZoom : 14;
+		$template->mapElementId = $this->mapElementId ? $this->mapElementId : 'map';
+
 		$template->render();
 	}
 	

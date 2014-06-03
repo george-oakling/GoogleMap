@@ -72,3 +72,23 @@ The second part is Javascript code, which operates with the map object. This par
 {/block scripts}
 ```
 
+IMarkersProvider implementation
+------------------------------
+
+The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return JSON objects implementing following schema:
+
+```json
+{
+markers:
+	[
+		{
+			"lat": 50,
+			"lng": 14,
+			"title": "Hi, I am your marker!",
+			"content": "I'm a <strong>barbie</strong> girl, in a barbie world!"
+		},
+		...
+	]
+}
+```
+

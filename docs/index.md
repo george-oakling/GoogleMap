@@ -36,7 +36,7 @@ public function createComponentGoogleMap()
 {control googleMap}
 ```
 
-You must include JQuery before the {control googleMap}, or if you iuse scripts block, or janmarek/webloader, you should use alternative component rendering, which is mentioned below.
+You must include JQuery before the {control googleMap}, or if you use scripts block, or janmarek/webloader, you should use alternative component rendering, which is mentioned below.
 
 There is no need for additional parameters, but usually you want to add some actions and handlers to map.
 
@@ -68,7 +68,7 @@ The second part is Javascript code, which operates with the map object. This par
 ```
 {block scripts}
 	{include parent}
-	{controle googleMap:JS}
+	{control googleMap:JS}
 {/block scripts}
 ```
 

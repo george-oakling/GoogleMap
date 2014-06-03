@@ -61,12 +61,13 @@ $(function(){
 						markers.push(marker);
 				
 						// append infowindow to each marker
-						google.maps.event.addListener(marker, 'click', function() {
-							infowindow.close();
-							infowindow.setContent(item.content);
-							infowindow.open(map, marker);
-						});
-			
+						if(item.content) {
+							google.maps.event.addListener(marker, 'click', function() {
+								infowindow.close();
+								infowindow.setContent(item.content);
+								infowindow.open(map, marker);
+							});
+						}
 					});
 				}
 			}
@@ -81,18 +82,22 @@ $(function(){
 	if(gMap.clickEvent) {
 		google.maps.event.addListener(map, "click", function(event) {
 		
-			var marker = new google.maps.Marker({
-				position: event.latLng,
-				map: map
-			});
+			if(gMap.clickEventShowMarker) {
+				var marker = new google.maps.Marker({
+					position: event.latLng,
+					map: map
+				});
+			}
 		
 			var dialog = new google.maps.InfoWindow();
 		
-			$.get(gMap.clickableWindow, function(data) {
+			$.get(gMap.clickEvent, function(data) {
 				dialog.setContent(data);
-				alert("Load was performed.");
+				//alert("Load was performed.");
 			});
 		
+			// tooooodooooo lots of tooodoooo
+			
 			google.maps.event.addListener(marker, "click", function() {
 				dialog.open(map, marker);
 			});

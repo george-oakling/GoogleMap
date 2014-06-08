@@ -7,8 +7,23 @@ var infowindow;
 /* globally accessible google map object */
 var map;
 
+/* map settings */
+var gMap;
+
 /* document initialization */
 $(function(){
+
+	gMap = {
+		
+		mapElementId : 'map',
+		
+		componentName : $("div#map").attr("data-gmap-component-name"),
+		markersRetrievalAddress: $("div#map").attr("data-gmap-markers-retrieval-address"),
+		clickEvent: $("div#map").attr("data-gmap-clickevent"),
+		initialZoom : parseInt($("div#map").attr("data-gmap-initial-zoom")),
+		initialCenterLatitude : parseFloat($("div#map").attr("data-gmap-initial-center-lat")),
+		initialCenterLongitude : parseFloat($("div#map").attr("data-gmap-initial-center-lng"))
+	};
 
 	// start da map
 	map = new google.maps.Map(

@@ -1,25 +1,10 @@
-<div id="map"></div>
+<div id="map" 
+	n:attr="
+		data-gmap-component-name => $componentName,
+		data-gmap-markers-retrieval-address => $markersRetrievalAddress,
+		data-gmap-clickevent => $clickEvent,
+		data-gmap-initial-zoom => $initialZoom,
+		data-gmap-initial-center-lat => $initialCenterLatitude,
+		data-gmap-initial-center-lng => $initialCenterLongitude
+"></div>
 <script src="http://maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;{/if}sensor=true"></script>
-<script>
-
-/* initial settings for google maps scripts */
-var gMap = {
-	
-	// name of component for handling the actions
-	componentName : {$componentName},
-	
-	// is the markers provider initialized?
-	markersRetrievalAddress: {$markersRetrievalAddress},
-	
-	// do we have a function for handling the click action?
-	clickEvent: {$clickEvent},
-	
-	mapElementId : {$mapElementId}, // id of an element, which will be used for 
-	initialZoom : {$initialZoom}, // initial zoom, 4-16
-	initialCenterLatitude : {$initialCenterLatitude}, // what is the latitude of initial center of map?
-	initialCenterLongitude : {$initialCenterLongitude} // what is the longitude of initial center of map?
-	
-	//type : google.maps.MapTypeId.mapType // ROADMAP etc.
-};
-
-</script>

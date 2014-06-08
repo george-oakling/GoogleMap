@@ -17,7 +17,9 @@ $(function(){
 				gMap.initialCenterLatitude,
 				gMap.initialCenterLongitude),
 			zoom : gMap.initialZoom,
-			mapTypeId: google.maps.MapTypeId.ROADMAP
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			disableDefaultUI: true,
+			draggable: true
 		}
 	);
 	
@@ -34,10 +36,10 @@ $(function(){
 		
 		// add these coordinates (current map boundaries) to each map refresh request
 		var currentMapBoundaries = {};
-		currentMapBoundaries[gMap.componentName + "-latsw"] = map.getBounds().getSouthWest().lat(),
-		currentMapBoundaries[gMap.componentName + "-lngsw"] = map.getBounds().getSouthWest().lng(),
-		currentMapBoundaries[gMap.componentName + "-latne"] = map.getBounds().getNorthEast().lat(),
-		currentMapBoundaries[gMap.componentName + "-lngne"] = map.getBounds().getSouthWest().lat()
+		currentMapBoundaries[gMap.componentName + "-latsw"] = map.getBounds().getSouthWest().lat();
+		currentMapBoundaries[gMap.componentName + "-lngsw"] = map.getBounds().getSouthWest().lng();
+		currentMapBoundaries[gMap.componentName + "-latne"] = map.getBounds().getNorthEast().lat();
+		currentMapBoundaries[gMap.componentName + "-lngne"] = map.getBounds().getSouthWest().lat();
 		
 		// get the markers position and add them to the map
 		$.getJSON(

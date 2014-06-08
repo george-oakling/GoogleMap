@@ -1,5 +1,4 @@
-<!-- Google Maps Component for Nette -->
-<div id="map" style="width:auto; height: 700px; overflow: hidden"></div>
+<div id="map"></div>
 <script src="http://maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;{/if}sensor=true"></script>
 <script>
 
@@ -18,7 +17,7 @@ var gMap = {
 	mapElementId : {$mapElementId}, // id of an element, which will be used for 
 	initialZoom : {$initialZoom}, // initial zoom, 4-16
 	initialCenterLatitude : {$initialCenterLatitude}, // what is the latitude of initial center of map?
-	initialCenterLongitude : {$initialCenterLongitude}, // what is the longitude of initial center of map?
+	initialCenterLongitude : {$initialCenterLongitude} // what is the longitude of initial center of map?
 	
 	//type : google.maps.MapTypeId.mapType // ROADMAP etc.
 };

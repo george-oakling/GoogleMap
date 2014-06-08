@@ -18,8 +18,9 @@ $(function(){
 		mapElementId : 'map',
 		
 		componentName : $("div#map").attr("data-gmap-component-name"),
-		markersRetrievalAddress: $("div#map").attr("data-gmap-markers-retrieval-address"),
-		clickEvent: $("div#map").attr("data-gmap-clickevent"),
+		markersRetrievalAddress : $("div#map").attr("data-gmap-markers-retrieval-address"),
+		filtersComponent : $("div#map").attr("data-gmap-filters-component"),
+		clickEvent : $("div#map").attr("data-gmap-clickevent"),
 		initialZoom : parseInt($("div#map").attr("data-gmap-initial-zoom")),
 		initialCenterLatitude : parseFloat($("div#map").attr("data-gmap-initial-center-lat")),
 		initialCenterLongitude : parseFloat($("div#map").attr("data-gmap-initial-center-lng"))
@@ -50,16 +51,19 @@ $(function(){
 		var oldMarkersCount = markers.length;
 		
 		// add these coordinates (current map boundaries) to each map refresh request
-		var currentMapBoundaries = {};
-		currentMapBoundaries[gMap.componentName + "-latsw"] = map.getBounds().getSouthWest().lat();
-		currentMapBoundaries[gMap.componentName + "-lngsw"] = map.getBounds().getSouthWest().lng();
-		currentMapBoundaries[gMap.componentName + "-latne"] = map.getBounds().getNorthEast().lat();
-		currentMapBoundaries[gMap.componentName + "-lngne"] = map.getBounds().getSouthWest().lat();
+		var markersRetrievalOptions = {};
+		markersRetrievalOptions[gMap.componentName + "-latsw"] = map.getBounds().getSouthWest().lat();
+		markersRetrievalOptions[gMap.componentName + "-lngsw"] = map.getBounds().getSouthWest().lng();
+		markersRetrievalOptions[gMap.componentName + "-latne"] = map.getBounds().getNorthEast().lat();
+		markersRetrievalOptions[gMap.componentName + "-lngne"] = map.getBounds().getSouthWest().lat();
+		markersRetrievalOptions[gMap.componentName + "-filters"] = $("#frm-"+gMap.filtersComponent).serializeArray();
+		
+		//console.log(markersRetrievalOptions);
 		
 		// get the markers position and add them to the map
 		$.getJSON(
 			gMap.markersRetrievalAddress,
-			currentMapBoundaries,
+			markersRetrievalOptions,
 			function(data) {
 				
 				if(typeof data.markers !== "undefined") {

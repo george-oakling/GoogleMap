@@ -12,22 +12,23 @@ class GoogleMapComponent extends Control
 	/** TODO */
 	private $clickEvent;
 
-	public $key, $initialCenterLatitude, $initialCenterLongitude, $mapElementId, $initialZoom;
+	public $key, $initialCenterLatitude, $initialCenterLongitude, $mapElementId, $initialZoom, $filtersComponent;
 
 	public function setMarkersProvider(IMarkersProvider $markersProvider)
 	{
 		$this->markersProvider = $markersProvider;
 	}
 
-	public function handleMarkers($latsw = NULL, $lngsw = NULL, $latne = NULL, $lngne = NULL)
+	public function handleMarkers($latsw = NULL, $lngsw = NULL, $latne = NULL, $lngne = NULL, $filters = array())
 	{
+		//dump($filters);
 		$markers = array();
 		$markersProvider = $this->markersProvider;
 		
 		if($latsw !== NULL) {
-			$markers = $markersProvider->getInRectangle($latsw, $lngsw, $latne, $lngne);
+			$markers = $markersProvider->getInRectangle($latsw, $lngsw, $latne, $lngne, $filters);
 		} else {
-			$markers = $markersProvider->getAll();
+			$markers = $markersProvider->getAll($filters);
 		}
 		
 		$this->presenter->payload->markers = $markers;
@@ -59,7 +60,8 @@ class GoogleMapComponent extends Control
 		$template->initialCenterLongitude = $this->initialCenterLongitude;
 		$template->initialZoom = $this->initialZoom ? $this->initialZoom : 14;
 		$template->mapElementId = $this->mapElementId ? $this->mapElementId : 'map';
-
+		$template->filtersComponent = $this->filtersComponent;
+		
 		$template->render();
 	}
 	

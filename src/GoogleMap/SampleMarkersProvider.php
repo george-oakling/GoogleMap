@@ -17,11 +17,17 @@ class SampleMarkersProvider extends Object implements IMarkersProvider
 		)
 	);
 
-	public function getAll() {
+	public function getAll($filters) {
+		foreach($filters as $filter) {
+			// do something
+		}
 		return $this->markers;
 	}
 	
-	public function getInRectangle($latsw, $lngsw, $latne, $lngne) {
+	public function getInRectangle($latsw, $lngsw, $latne, $lngne,  $filters) {
+		foreach($filters as $filter) {
+			// do something
+		}
 		return $this->markers;
 	}
 }

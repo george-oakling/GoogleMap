@@ -2,9 +2,10 @@
 	n:attr="
 		data-gmap-component-name => $componentName,
 		data-gmap-markers-retrieval-address => $markersRetrievalAddress,
+		data-gmap-filters-component => $filtersComponent,
 		data-gmap-clickevent => $clickEvent,
 		data-gmap-initial-zoom => $initialZoom,
 		data-gmap-initial-center-lat => $initialCenterLatitude,
 		data-gmap-initial-center-lng => $initialCenterLongitude
 "></div>
-<script src="http://maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;{/if}sensor=true"></script>
+<script src="//maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;{/if}sensor=true"></script>

@@ -31,8 +31,13 @@ class GoogleMapComponent extends Control
 			$markers = $markersProvider->getAll($filters);
 		}
 		
-		$this->presenter->payload->markers = $markers;
-		$this->presenter->sendPayload();
+		if($this->presenter->isAjax()) {
+			$this->presenter->payload->markers = $markers;
+			$this->presenter->sendPayload();
+		} else {
+			dump($markers);
+			$this->presenter->terminate();
+		}
 	}
 
 	/* render both component parts */

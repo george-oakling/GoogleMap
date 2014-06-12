@@ -1,11 +1,12 @@
 <div id="map" 
 	n:attr="
-		data-gmap-component-name => $componentName,
-		data-gmap-markers-retrieval-address => $markersRetrievalAddress,
-		data-gmap-filters-component => $filtersComponent,
-		data-gmap-clickevent => $clickEvent,
-		data-gmap-initial-zoom => $initialZoom,
-		data-gmap-initial-center-lat => $initialCenterLatitude,
-		data-gmap-initial-center-lng => $initialCenterLongitude
+		data-component-name => $componentName,
+		data-markers-retrieval-address => $markersRetrievalAddress,
+		data-collection-retrieval-address => $collectionRetrievalAddress,
+		data-filters-component => $filtersComponent,
+		data-clickevent => $clickEvent,
+		data-initial-zoom => $initialZoom,
+		data-initial-center-lat => $initialCenterLatitude,
+		data-initial-center-lng => $initialCenterLongitude
 "></div>
 <script src="//maps.googleapis.com/maps/api/js?{if $key}key={$key}&amp;{/if}sensor=true"></script>

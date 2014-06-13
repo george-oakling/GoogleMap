@@ -1,6 +1,7 @@
 #################
 ## Eclipse
 #################
+composer.lock
 
 *.pydevproject
 .project

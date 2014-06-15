@@ -112,7 +112,7 @@ $(function(){
 						width: 0
 					}
 			});
-			dialog.setContent($(content).parent().html());
+			dialog.setContent($(content).html());
 			dialog.open(map, anchor);
 			
 		});

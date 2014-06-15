@@ -36,8 +36,8 @@ public function createComponentGoogleMap()
 ```
 
 You must include JQuery before the {control googleMap}, or:
-- if you use scripts block, put {control googleMap:HTML} where you want your map and {controlo googleMap:JS} where you have scripts block, e.g. {block scripts}{include parent}{control googleMap:JS}{/block}
-- if you use janmarek's webloader, just put a newline at javascript definitions like this: ```yaml - %pathToGoogleMapComponent%/google.map.js ``` and than put {control googleMap:HTML} where you want your map
+- if you use scripts block, put ```{control googleMap:HTML}``` where you want your map and ```{control googleMap:JS}``` where you have scripts block, e.g. ```{block scripts}{include parent}{control googleMap:JS}{/block}```
+- if you use janmarek's webloader, just put a newline at javascript definitions like this: ``` - %pathToGoogleMapComponent%/google.map.js``` and than put ```{control googleMap:HTML}``` where you want your map
 
 WARNING: map is hardcoded represented as ``` <div id="map"></div> ``` and you have to specify the height of map by CSS. If you dont specify the height, map will be shown, but only zero pixel height, so practically nothing will be shown and you will be thinking, why WTF? Why?
 

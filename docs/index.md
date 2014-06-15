@@ -47,7 +47,6 @@ You also want to set the intial center of map, zoom and your own Google Maps API
 $gmap->initialCenterLat = 50.083;
 $gmap->initialCenterLng = 14.423;
 $gmap->initialZoom = 12;
-$gmap->mapElementId = 'map';
 $gmap->key = 'AIzAxxx:-)';
 ```
 

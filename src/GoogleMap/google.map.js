@@ -79,7 +79,7 @@ $(function(){
 			
 			// if title, add h2 title
 			if(feature.getProperty('title')) {
-				$(content).prependTo(
+				$(content).prepend(
 					$('<h2/>', {
 						text: feature.getProperty('title')
 					})
@@ -88,7 +88,7 @@ $(function(){
 				
 			// if href add an anchor
 			if(feature.getProperty('href')) {
-				$(content).appendTo(
+				$(content).append(
 					$('<a/>', {
 						href: feature.getProperty('href'), 
 						title: feature.getProperty('title'), 
@@ -104,7 +104,7 @@ $(function(){
 						width: 0
 					}
 			});
-			dialog.setContent($(content).html());
+			dialog.setContent($(content).parent().html());
 			dialog.open(map, anchor);
 			
 		});

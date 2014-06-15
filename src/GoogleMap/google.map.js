@@ -79,7 +79,7 @@ $(function(){
 			
 			// if title, add h2 title
 			if(feature.getProperty('title')) {
-				$(content).prepend(
+				$(content).prependTo(
 					$('<h2/>', {
 						text: feature.getProperty('title')
 					})
@@ -88,7 +88,7 @@ $(function(){
 				
 			// if href add an anchor
 			if(feature.getProperty('href')) {
-				$(content).append(
+				$(content).appendTo(
 					$('<a/>', {
 						href: feature.getProperty('href'), 
 						title: feature.getProperty('title'), 

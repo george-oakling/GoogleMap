@@ -35,11 +35,11 @@ public function createComponentGoogleMap()
 {control googleMap}
 ```
 
-You must include JQuery before the {control googleMap}, or:
+You must include JQuery before the ```{control googleMap}```, or:
 - if you use scripts block, put ```{control googleMap:HTML}``` where you want your map and ```{control googleMap:JS}``` where you have scripts block, e.g. ```{block scripts}{include parent}{control googleMap:JS}{/block}```
-- if you use janmarek's webloader, just put a newline at javascript definitions like this: ``` - %pathToGoogleMapComponent%/google.map.js``` and than put ```{control googleMap:HTML}``` where you want your map
+- if you use janmarek's webloader, just put a newline at javascript definitions like this: ```%pathToGoogleMapComponent%/google.map.js``` and than put ```{control googleMap:HTML}``` where you want your map
 
-WARNING: map is hardcoded represented as ``` <div id="map"></div> ``` and you have to specify the height of map by CSS. If you dont specify the height, map will be shown, but only zero pixel height, so practically nothing will be shown and you will be thinking, why WTF? Why?
+WARNING: map is hardcoded represented as ```<div id="map"></div>``` and you have to specify the height of map by CSS. If you dont specify the height, map will be shown, but only zero pixel height, so practically nothing will be shown and you will be thinking, why WTF? Why?
 
 You also want to set the intial center of map, zoom and your own Google Maps API key. It can be done like this:
 
@@ -51,7 +51,7 @@ $gmap->mapElementId = 'map';
 $gmap->key = 'AIzAxxx:-)';
 ```
 
-These parametres are added as data attributes to #map div, so the Javascript code can receive them and operate with them accordingly.
+These parametres are added as data attributes to ```<div id="map"></div>```, so the Javascript code can receive them and operate with them accordingly.
 
 Markers for map
 ---------------

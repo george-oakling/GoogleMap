@@ -1,12 +1,11 @@
 GoogleMap - component for Nette
 ==========================
 
-
 Requirements
 ------------
-
 - Nette >= v2.2.x
 - JQuery >= v1.8
+- george-oakling/geojson
 
 
 Installation
@@ -36,7 +35,23 @@ public function createComponentGoogleMap()
 {control googleMap}
 ```
 
-You must include JQuery before the {control googleMap}, or if you use scripts block, or janmarek/webloader, you should use alternative component rendering, which is mentioned below.
+You must include JQuery before the {control googleMap}, or:
+- if you use scripts block, put {control googleMap:HTML} where you want your map and {controlo googleMap:JS} where you have scripts block, e.g. {block scripts}{include parent}{control googleMap:JS}{/block}
+- if you use janmarek's webloader, just put a newline at javascript definitions like this: ```yaml - %pathToGoogleMapComponent%/google.map.js ``` and than put {control googleMap:HTML} where you want your map
+
+WARNING: map is hardcoded represented as ``` <div id="map"></div> ``` and you have to specify the height of map by CSS. If you dont specify the height, map will be shown, but only zero pixel height, so practically nothing will be shown and you will be thinking, why WTF? Why?
+
+You also want to set the intial center of map, zoom and your own Google Maps API key. It can be done like this:
+
+```php
+$gmap->initialCenterLat = 50.083;
+$gmap->initialCenterLng = 14.423;
+$gmap->initialZoom = 12;
+$gmap->mapElementId = 'map';
+$gmap->key = 'AIzAxxx:-)';
+```
+
+These parametres are added as data attributes to #map div, so the Javascript code can receive them and operate with them accordingly.
 
 Markers for map
 ---------------
@@ -136,80 +151,8 @@ class DbFCProvider
 }
 ```
 
+
+
+
 TODOOOOO.....
-
-$markersProvider = new GoogleMap\SampleMarkersProvider();
-$gmap->setMarkersProvider($markersProvider);
-```
-
-2. You want to set intial center of map, zoom or map element id and your own Google Maps API key? No problem at all:
-
-```php
-$gmap->initialCenterLatitude = 50.083;
-$gmap->initialCenterLongitude = 14.423;
-$gmap->initialZoom = 12;
-$gmap->mapElementId = 'map';
-$gmap->key = 'AIzAxxx:-)';
-```
-
-There are actually two parts of the GoogleMap component. First one is needed HTML and JS scripts for map options, this can be rendered with this command:
-
-```
-{control googleMap:HTML}
-```
-
-The second part is Javascript code, which operates with the map object. This part works quite good with janmarek/webloader component, all you need is to add google.map.js in component folder to webloader's JS definition, or you can add below lines to block like this:
-
-```
-{block scripts}
-	{include parent}
-	{control googleMap:JS}
-{/block scripts}
-```
-
-
-IMarkersProvider implementation
-------------------------------
-
-The IMarkersProvider interface is quite easy to understand, but it has to implement the functions of getInRectangle and getAll, which return array of markers, which is described here:
-
-```php
-$markers = array(
-	[0] => array(
-		'lat' => 50,
-		'lng' => 14,
-		'title' => 'Prague',
-		'content' => 'Welcome to Prague, and enjoy your vacation! We have <strong>metro</strong>!'
-		// content can have HTML inside, this will be then opened in infowindow
-	)
-);
-
-```
-
-Then the GoogleMapComponent transfers these objects into one JSON object, which is sent to the map by AJAX request and then handled by the Javascript in the google.map.js file. The JSON file looks like this:
-
-```json
-{
-"markers":
-	[
-		{
-			"lat": 50,
-			"lng": 14,
-			"title": "Hi, I am your marker!",
-			"content": "I'm a <strong>barbie</strong> girl, in a barbie world!"
-		}
-	]
-}
-```
-
-Howto include into marker infowindow a link to some presenter with marker special params?
-----------------------------------------------------------------
-
-TODO - implementation still not clean enough.
-
-
-Click-on-map event
--------------------
-
-TODO - implementation is TBD.
 

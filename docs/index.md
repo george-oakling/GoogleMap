@@ -44,8 +44,8 @@ WARNING: map is hardcoded represented as ```<div id="map"></div>``` and you have
 You also want to set the intial center of map, zoom and your own Google Maps API key. It can be done like this:
 
 ```php
-$gmap->initialCenterLat = 50.083;
-$gmap->initialCenterLng = 14.423;
+$gmap->initialCenterLatitude = 50.083;
+$gmap->initialCenterLongitude = 14.423;
 $gmap->initialZoom = 12;
 $gmap->key = 'AIzAxxx:-)';
 ```

@@ -90,7 +90,7 @@ $(function(){
 				$(content).add(
 					$('<div/>', {
 						html: feature.getProperty('content')
-					});
+					})
 				);
 			}
 			

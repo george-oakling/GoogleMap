@@ -67,10 +67,10 @@ $(function(){
 			var feature = event.feature;
 			var anchor = new google.maps.MVCObject();
 			var content = $('<div/>', {
-				html: $('<div/>'), {
+				html: $('<div/>', {
 					id: 'map-infowindow',
 					class: 'map-infowindow'
-				}
+				})
 			});
 			
 			dialog.close();

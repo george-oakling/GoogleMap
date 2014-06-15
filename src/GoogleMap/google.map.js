@@ -67,11 +67,10 @@ $(function(){
 			var feature = event.feature;
 			var anchor = new google.maps.MVCObject();
 			var content = $('<div/>', {
-				html: $('<div/>', {
+				html: $('<div/>'), {
 					id: 'map-infowindow',
-					class: 'map-infowindow',
-					html: feature.getProperty('content')
-				})
+					class: 'map-infowindow'
+				}
 			});
 			
 			dialog.close();
@@ -79,16 +78,25 @@ $(function(){
 			
 			// if title, add h2 title
 			if(feature.getProperty('title')) {
-				$(content).prepend(
+				$(content).add(
 					$('<h2/>', {
 						text: feature.getProperty('title')
 					})
 				);
 			}
-				
+			
+			//if content, add div of content
+			if(feature.getProperty('content')) {
+				$(content).add(
+					$('<div/>', {
+						html: feature.getProperty('content')
+					});
+				);
+			}
+			
 			// if href add an anchor
 			if(feature.getProperty('href')) {
-				$(content).append(
+				$(content).add(
 					$('<a/>', {
 						href: feature.getProperty('href'), 
 						title: feature.getProperty('title'), 

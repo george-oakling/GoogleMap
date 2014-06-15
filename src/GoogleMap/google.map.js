@@ -68,6 +68,8 @@ $(function(){
 			var anchor = new google.maps.MVCObject();
 			var content = $('<div/>', {
 				html: $('<div/>', {
+					id: 'map-infowindow',
+					class: 'map-infowindow',
 					html: feature.getProperty('content')
 				})
 			});

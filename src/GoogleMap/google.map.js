@@ -44,7 +44,7 @@ $(function(){
 				mapOptions.collectionRetrievalAddress,
 				markersRetrievalOptions,
 				function(payload) {
-					map.data.addGeoJson(payload.collection);
+					map.data.addGeoJson(payload.collection, { idPropertyName: 'id' });
 				}
 			);
 		

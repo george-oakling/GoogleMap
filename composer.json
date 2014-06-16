@@ -14,7 +14,7 @@
 		"classmap": ["src/"]
 	},
 	"require": {
-		"nette/nette": "~2.2",
-		"george-oakling/geojson": "dev-master"
+		"george-oakling/geojson": "0.0.1.*@dev",
+		"nette/nette": "~2.2"
 	}
 }

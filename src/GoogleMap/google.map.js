@@ -95,13 +95,26 @@ $(function(){
 			
 			// if href add an anchor
 			if(feature.getProperty('href')) {
-				$(content).append(
-					$('<a/>', {
-						href: feature.getProperty('href'), 
-						title: feature.getProperty('title'), 
-						text: 'detail' 
-					})
-				);
+				
+				var href = $('<a/>', {
+					href: feature.getProperty('href'), 
+					title: feature.getProperty('title'), 
+					text: 'detail',
+					class: 'ajax',
+					id: 'dialogAnchor'
+				});
+				
+				/* nette ajax for Google maps */
+				if($.nette !== undefined) {
+					google.maps.event.addDomListener(dialog, 'domready', function() {
+						$('#map-infowindow').on('click', '.ajax', function(e) {
+							e.preventDefault();
+							$.nette.ajax(this.href, this, e);
+						});
+					});
+				}
+				 				
+				$(content).append($(href));
 			}
 			
 			$(container).append($(content));
